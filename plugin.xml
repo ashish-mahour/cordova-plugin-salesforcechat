@@ -60,7 +60,7 @@
         <podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git" />
-                <source url="https://github.com/yashbansal18/pods-specs-public" />
+                <source url="https://github.com/goinstant/pods-specs-public" />
             </config>
             <pods use-frameworks="true">
                 <pod name="ServiceSDK" spec="~> 238.0" />
