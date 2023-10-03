@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="cordova-plugin-salesforcechat" version="1.0.4"
-xmlns="http://apache.org/cordova/ns/plugins/1.0"
-xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Salseforce chat</name>
     <description>Plugin for SalesForce chat</description>
     <author>Shailendra</author>
@@ -15,15 +15,17 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     </engines>
 
     <js-module name="SalesforceSnapInsPlugin" src="www/SalesforceSnapInsPlugin.js">
-        <clobbers target="cordova.plugins.SalesforceSnapIns"/>
+        <clobbers target="cordova.plugins.SalesforceSnapIns" />
     </js-module>
 
     <platform name="android">
-<!--         <dependency id="cordova-plugin-android-fragmentactivity" url="https://github.com/SonoIo/cordova-plugin-android-fragmentactivity" commit="master" /> -->
+        <!--         <dependency id="cordova-plugin-android-fragmentactivity"
+        url="https://github.com/SonoIo/cordova-plugin-android-fragmentactivity" commit="master" /> -->
 
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="SalesforceSnapInsPlugin">
-                <param name="android-package" value="org.apache.cordova.salesforce.SalesforceSnapInsPlugin" />
+                <param name="android-package"
+                    value="org.apache.cordova.salesforce.SalesforceSnapInsPlugin" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
@@ -38,7 +40,8 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             <uses-sdk android:minSdkVersion="21" android:maxSdkVersion="28" />
         </edit-config> -->
 
-        <source-file src="src/android/SalesforceSnapInsPlugin.java" target-dir="src/org/apache/cordova/salesforce" />
+        <source-file src="src/android/SalesforceSnapInsPlugin.java"
+            target-dir="src/org/apache/cordova/salesforce" />
         <source-file src="src/android/colors.xml" target-dir="src/res/values" />
 
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
@@ -54,20 +57,20 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         </pods-config> -->
 
 
-<podspec>
-        <config>
-            <source url="https://github.com/CocoaPods/Specs.git" />
-            <source url="https://github.com/yashbansal18/pods-specs-public" />
-        </config>
-        <pods use-frameworks="true">
-            <pod name="ServiceSDK" spec="~> 222.0" />
-        </pods>
-    </podspec>
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git" />
+                <source url="https://github.com/yashbansal18/pods-specs-public" />
+            </config>
+            <pods use-frameworks="true">
+                <pod name="ServiceSDK" spec="~> 238.0.0" />
+            </pods>
+        </podspec>
         <!-- <pod name="ServiceSDK" spec="~> 222.0" /> -->
 
         <config-file parent="/*" target="config.xml">
             <feature name="SalesforceSnapInsPlugin">
-                <param name="ios-package" value="SalesforceSnapInsPlugin"/>
+                <param name="ios-package" value="SalesforceSnapInsPlugin" />
             </feature>
         </config-file>
 
