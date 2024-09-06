@@ -56,7 +56,9 @@
             <source url="https://github.com/goinstant/pods-specs-public" />
         </pods-config> -->
 
-
+        <config-file target="config.xml" parent="/*">
+            <preference name="deployment-target" value="12.0"/>
+        </config-file>
         <podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git" />
