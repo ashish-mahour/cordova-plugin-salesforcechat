@@ -61,7 +61,7 @@
                 <source url="https://github.com/goinstant/pods-specs-public" />
             </config>
             <pods use-frameworks="true">
-                <pod name="ServiceSDK" spec="~> 224.0.3" />
+                <pod name="ServiceSDK" spec="~> 246.0.0" />
             </pods>
         </podspec>
 
