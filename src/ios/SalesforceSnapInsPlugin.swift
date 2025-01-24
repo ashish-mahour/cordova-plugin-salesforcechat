@@ -1,3 +1,4 @@
+import Cordova
 //
 //  SalesforceSnapInsPlugin.swift
 //  SalesforceSnapInsPlugin
@@ -33,7 +34,7 @@ func hexStringToUIColor(_ hex: String) -> UIColor {
 }
 
 
-@objc(SalesforceSnapInsPlugin) class SalesforceSnapInsPlugin: CDVPlugin, UNUserNotificationCenterDelegate, SCSChatSessionDelegate {
+@objc(SalesforceSnapInsPlugin) class SalesforceSnapInsPlugin: CDVPlugin, SCSChatSessionDelegate {
 
     static let sharedInstance = SalesforceSnapInsPlugin()
     static func shared() -> SalesforceSnapInsPlugin { return SalesforceSnapInsPlugin.sharedInstance }
@@ -51,16 +52,6 @@ func hexStringToUIColor(_ hex: String) -> UIColor {
     override func pluginInitialize () {
         ServiceCloud.shared().chatCore.add(delegate: self)
         UINavigationBar.appearance().backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
-        if #available(iOS 10.0, *) {
-            let center = UNUserNotificationCenter.current()
-            center.delegate = SalesforceSnapInsPlugin.shared()
-            center.requestAuthorization(options: [.alert,.sound], completionHandler: { granted, error in
-                // Enable or disable features based on authorization
-            })
-            let generalCategory = UNNotificationCategory(identifier: "General", actions: [], intentIdentifiers: [], options: .customDismissAction)
-            let categorySet: Set<UNNotificationCategory> = [generalCategory]
-            center.setNotificationCategories(categorySet)
-        }
     }
 
     @objc func initialize(_ command: CDVInvokedUrlCommand) {
@@ -444,21 +435,4 @@ func hexStringToUIColor(_ hex: String) -> UIColor {
     @objc func session(_ session: SCSChatSession!, didError error: Error!, fatal: Bool) {
         print("Chat error: \(error.localizedDescription)")
     }
-
-    // MARK: - UNUserNotificationCenterDelegate
-
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // let chat = ServiceCloud.shared().chatUI!
-        // chat.handle(response.notification) // When fixed by Salesforce uncomment this line
-    }
-
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let chat = ServiceCloud.shared().chatUI!
-        if (chat.shouldDisplayNotificationInForeground()) {
-            completionHandler(.alert)
-        }
-    }
-
 }
