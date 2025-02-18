@@ -1,4 +1,3 @@
-import Cordova
 //
 //  SalesforceSnapInsPlugin.swift
 //  SalesforceSnapInsPlugin
